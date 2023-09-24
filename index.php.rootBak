@@ -1,0 +1,115 @@
+<?php
+	include_once('./Index/301.php');	//301转向
+	header("Content-type: text/html; charset=gb2312");
+
+	$url=$_SERVER['HTTP_HOST'];
+	$domain=explode('.',strtolower($url));
+	$shopdomain=explode('shop',$domain[0]);
+	$wwwurl="http://www.";
+	$snurl="http://u.";
+	$shopurl="http://shop.";
+	$xxurl="http://xx.";
+	$index="/Index.html";
+	if($_SERVER['REMOTE_ADDR']=="210.32.0.145") {$myurl="shenei.net.to4.zju6.edu.cn";$index="/Index.html?ipv6";}
+	elseif($_SERVER['REMOTE_ADDR']=="213.197.27.252"){$myurl="shenei.net.sixxs.org";}
+	else{$myurl="shenei.net";}
+	$dbh = @mysql_connect("localhost:3306","shenebwx_u",urldecode("%75%40%53%68%65%4E%65%69%30%31")) or die ('数据库连接失败！');
+
+	if(count($domain)==3)
+	{
+		@mysql_select_db("shenebwx_u", $dbh) or die('数据库选定失败！');
+		mysql_query("set names 'gbk'");
+		$sql = "SELECT * FROM sn_space where domain ='$domain[0]'";
+		$rs = mysql_query($sql, $dbh) or die('数据库查询失败！');
+		$row = mysql_fetch_array($rs);
+		if($row[0]){header("Location:".$snurl.$myurl."/?".$row[0]);}
+/* ShopNC
+		@mysql_select_db("shop", $dbh) or die('数据库选定失败！');
+		mysql_query("set names 'gbk'");
+		$sql2 = "SELECT member_id FROM shopnc_shop_info where shop_domain ='$shopdomain[1]'";
+		$rs2 = mysql_query($sql2, $dbh) or die('数据库查询失败！');
+		$row2 = mysql_fetch_array($rs2);
+		@mysql_close($dbh);
+		if(strstr($domain[0],'shop'))
+		{
+			if($row2[0]){header("Location:".$wwwurl.$myurl."/shop/store/index.php?userid=".$row2[0]);}
+			else {header("Location:".$wwwurl.$myurl."/shop/");}
+		}
+*/
+		elseif($domain[0]=="shenei"){header("Location:".$snurl.$myurl);}
+		elseif($domain[0]=="shop"){header("Location:".$shopurl.$myurl);}
+		elseif($domain[0]=="wap"){header("Location:".$snurl.$myurl."/wap/");}
+		elseif($domain[0]=="ipv6"){header("Location:".$snurl.$myurl."/space-1-do-blog-id-615.html");}//header("Location:".$snurl.$myurl."/space.php?uid=1&do=blog&id=615");}
+		elseif($domain[0]=="wuxian"){header("Location:".$snurl.$myurl."/space-1-do-blog-id-616.html");}
+		elseif($domain[0]=="jianzhi"){frame("兼职协会 - 福建工程学院",$xxurl.$myurl."/public/info.php?catid=4");}//header("Location:".$xxurl.$myurl."/public/info.php?catid=4");}
+		else {echo file_get_contents($wwwurl.$myurl.$index);}//header("Location:".$wwwurl.$myurl.$index);}
+	}
+	elseif(count($domain)==4)
+	{
+	    if($domain[1]=="q")
+	    {
+		if($domain[0]=="bbk"){frame("【BBK舞队】 - B-boy King",$snurl.$myurl."/space-mtag-tagid-2.html");}//header("Location:".$snurl.$myurl."/space-mtag-tagid-2.html");}
+		elseif($domain[0]=="free"){frame("【Free Crew】",$snurl.$myurl."/space-mtag-tagid-32.html");}
+		elseif($domain[0]=="jsj"){frame("计算机系 - 福建工程学院 - 交流群组 - 【舍内网】 - 福州校园网",$snurl.$myurl."/space.php?do=mtag&tagid=3");}
+		elseif($domain[0]=="zj"){frame("终极三部曲 - 交流群组 - 【舍内网】 - 福州校园网",$snurl.$myurl."/space.php?do=mtag&tagid=34");}
+		elseif($domain[0]=="shijia"){frame("十佳歌手大赛 - 交流群组 - 福建工程学院",$snurl.$myurl."/space.php?do=mtag&tagid=35");}
+		elseif($domain[0]=="xy"){frame("星语电脑协会 - 福建工程学院 - 交流群组 - 【舍内网】 - 福州校园网",$snurl.$myurl."/space-mtag-tagid-27.html");}
+		elseif($domain[0]=="jianzhi"){frame("兼职协会 - 福建工程学院 - 交流群组 - 【舍内网】 - 福州校园网",$snurl.$myurl."/space-mtag-tagid-31.html");}
+		else{header("Location:".$snurl.$myurl."/space-mtag-tagid-".$domain[0].".html");}//header("Location:".$snurl.$myurl."/space.php?do=mtag&tagid=".$domain[0]);}
+	    }
+		elseif($domain[0]=="wap")
+		{
+			if($domain[1]=="u") {
+				header("Location:".$snurl.$myurl."/wap/");
+			}elseif($domain[1]=="xx") {
+				header("Location:".$xxurl.$myurl."/wap/");
+			}else{
+				header("Location:".$snurl.$myurl."/wap/");
+			}
+		}
+		else {echo file_get_contents($wwwurl.$myurl.$index);}//header("Location:".$wwwurl.$myurl.$index);}
+	}
+	else
+	{
+//		header("Location:".$wwwurl.$myurl.$index);
+		echo file_get_contents($wwwurl.$myurl.$index);
+	}
+
+	if($url=="01.8866.org"){header("Location:".$wwwurl.$myurl.$index);}
+
+	if($url=="www.fjutshop.com"){header("Location:".$shopurl.$myurl.$_SERVER["REQUEST_URI"]);}
+
+	if($url=="u.fjutshop.com"){header("Location:".$snurl.$myurl.$_SERVER["REQUEST_URI"]);}
+
+	if(!not_wap()){header("Location:".$snurl.$myurl."/wap/");}
+
+	Function not_wap() {
+		$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+		$uachar = "/(Windows|Linux)/i";
+		if((!is_wap() || preg_match($uachar, $ua)) && !strpos(strtolower($_SERVER['REQUEST_URI']),'wap')){//如果在访问的URL中已经找到 wap字样，表明已经在访问WAP页面，无需跳转，下一版本增加 feed访问时也不跳转
+			return true;
+		}else{
+			return false;
+		}
+	}
+	Function is_wap() {
+		$ua = strtolower($_SERVER['HTTP_USER_AGENT']);
+		$uachar = "/(GoBrowser|nokia|sony|ericsson|mot|samsung|sgh|lg|philips|panasonic|alcatel|lenovo|cldc|midp|wap|mobile)/i";
+		if(($ua != '' || preg_match($uachar, $ua)) && !strpos(strtolower($_SERVER['REQUEST_URI']),'wap')){//如果在访问的URL中已经找到 wap字样，表明已经在访问WAP页面，无需跳转，下一版本增加 feed访问时也不跳转
+			return true;
+		}else{
+			return false;
+		}
+	}
+	Function frame($frametitle, $frameurl) {
+?>
+<html>
+<head>
+<title><?=$frametitle?></title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+</head>
+<FRAMESET border=0 frameSpacing=0 frameBorder=NO><FRAME name=mainFrame src="<?=$frameurl?>" scrolling=yes></FRAMESET>
+</html>
+<?
+	}
+?>

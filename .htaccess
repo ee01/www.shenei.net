@@ -1,0 +1,17 @@
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^shenei\.net$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.shenei\.net$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+RewriteRule ^/?$ "http\:\/\/sn\.eexx\.me" [R=301,L]
+
+RewriteCond %{HTTP_HOST} ^shenei\.net$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.shenei\.net$
+RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/(?:\ Ballot169)?
+RewriteRule ^(.*)$ "http\:\/\/sn\.eexx\.me\/$1" [R=301,L]

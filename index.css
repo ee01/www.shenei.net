@@ -1,0 +1,94 @@
+/* hide from ie on mac \*/
+html {
+	height: 100%;
+	overflow: hidden;
+}
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background-color: #151D1F ;
+}
+
+
+#menu ul{
+	margin:0;
+	padding:0;
+	list-style:none;
+	position:absolute;
+	right:0;
+}
+
+#menu li{
+	width:100px;
+	height:40px;
+	float:left;
+	color:#191919;
+	text-align:center;
+	overflow:hidden;
+	font-family: YaHeiConsolas,"Microsoft YaHei","Î¢ÈíÑÅºÚ","ËÎÌå";
+}
+
+#menu a{
+	color:#FFF;
+	text-decoration:none;
+}
+#menu .subject a:hover{
+	border-bottom: orangered solid 2px;
+}
+
+#menu p{
+	margin-top:10px;
+	padding:0px 5px;
+	font-size:16px;
+	color:#FFF;
+}
+
+#menu .subtext{
+	padding-top:5px;
+	font-size:14px;
+}
+#menu .subtext a:hover{
+	color:orangered;
+	text-decoration:underline;
+}
+
+/*Menu Color Classes*/
+.green{background:#6AA63B url('bg-item-green.jpg') top left no-repeat;}
+.yellow{background:#FBC700 url('bg-item-yellow.jpg') top left no-repeat;}
+.red{background:#D52100 url('bg-item-red.jpg') top left no-repeat;}
+.purple{background:#5122B4 url('bg-item-purple.jpg') top left no-repeat;}
+.blue{background:#0292C0 url('bg-item-blue.jpg') top left no-repeat;}
+
+/* No Flash */
+#noflash {
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	color: #FFF;
+	text-align: center;
+}
+#noflash a {
+	color: #FFF;
+}
+
+#copyright {
+	position: absolute;
+	bottom: 10px;
+	width: 100%;
+	font-size: 14px;
+	text-align: center;
+	color: #CCC;
+}
+#copyright a{
+	text-decoration:none;
+	color: #FFF;
+}
+#copyright a:hover{
+	color: #0CF;
+	padding-bottom: 2px;
+	border-bottom: #0CF solid 2px;
+}
+#copyright img{
+	vertical-align: middle;
+}
