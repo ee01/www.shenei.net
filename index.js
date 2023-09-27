@@ -1,11 +1,11 @@
 <!--
 // -----------------------------------------------------------------------------
-// È«¾Ö±äÁ¿
-// ËùĞè Flash µÄÖ÷°æ±¾ºÅ
+// å…¨å±€å˜é‡
+// æ‰€éœ€ Flash çš„ä¸»ç‰ˆæœ¬å·
 var requiredMajorVersion = 9;
-// ËùĞè Flash µÄ´Î°æ±¾ºÅ
+// æ‰€éœ€ Flash çš„æ¬¡ç‰ˆæœ¬å·
 var requiredMinorVersion = 0;
-// ËùĞè Flash µÄ°æ±¾ºÅ
+// æ‰€éœ€ Flash çš„ç‰ˆæœ¬å·
 var requiredRevision = 45;
 
 // -----------------------------------------------------------------------------
@@ -13,11 +13,11 @@ var requiredRevision = 45;
 
 function showflash() {
 if (AC_FL_RunContent == 0 || DetectFlashVer == 0) {
-alert("´ËÒ³ĞèÒª AC_FL_RunContent.js");
+alert("æ­¤é¡µéœ€è¦ AC_FL_RunContent.js");
 } else {
 var hasRightVersion = DetectFlashVer(requiredMajorVersion, requiredMinorVersion, requiredRevision);
-if(hasRightVersion) {  // Èç¹ûÎÒÃÇ¼ì²âµ½ÁË¿É½ÓÊÜµÄ°æ±¾
-// Ç¶Èë Flash Ó°Æ¬
+if(hasRightVersion) {  // å¦‚æœæˆ‘ä»¬æ£€æµ‹åˆ°äº†å¯æ¥å—çš„ç‰ˆæœ¬
+// åµŒå…¥ Flash å½±ç‰‡
 AC_FL_RunContent(
 'codebase', 'http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,45,0',
 'width', '100%',
@@ -40,17 +40,17 @@ AC_FL_RunContent(
 'salign', '',
 'wmode', 'opaque'
 ); //end AC code
-} else {  // Flash Ì«¾É»òÕßÎÒÃÇÎŞ·¨¼ì²âµ½²å¼ş
-var alternateContent = '<div id="noflash">No Flash, No ¿áìÅµÄ¶¯»­~'
-+ ' <a href="https://get.adobe.com/flashplayer/">»ñÈ¡Flash²å¼ş</a></div>';
-document.write(alternateContent);  // ²åÈë·Ç Flash ÄÚÈİ
+} else {  // Flash å¤ªæ—§æˆ–è€…æˆ‘ä»¬æ— æ³•æ£€æµ‹åˆ°æ’ä»¶
+var alternateContent = '<div id="noflash">No Flash, No é…·ç‚«çš„åŠ¨ç”»~'
++ ' <a href="https://get.adobe.com/flashplayer/">è·å–Flashæ’ä»¶</a></div>';
+document.write(alternateContent);  // æ’å…¥é Flash å†…å®¹
 }
 }
 // -->
 }
 
 
-/*     µ¼º½      */
+/*     å¯¼èˆª      */
 jQuery(document).ready(function($){
 	
 	//Fix Errors - http://www.learningjquery.com/2009/01/quick-tip-prevent-animation-queue-buildup/
